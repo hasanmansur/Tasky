@@ -1,0 +1,22 @@
+{
+  "name": "tasky",
+  "version": "1.0.0",
+  "description": "simple task manager",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hasanmansur/Tasky.git"
+  },
+  "author": "S. M. Hasan Mansur",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hasanmansur/Tasky/issues"
+  },
+  "homepage": "https://github.com/hasanmansur/Tasky#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
