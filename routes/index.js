@@ -1,10 +1,8 @@
 var roles = require("./routers/roles");
 var users = require("./routers/users");
 var tasks = require("./routers/tasks");
-//var globalMiddleware = require("./middlewares/global");
 
 module.exports = function (app) {
-    //app.use(globalMiddleware);
 
     app.get("/", function (req, res) {
         res.send("welcome to task manager");

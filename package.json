@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/hasanmansur/Tasky#readme",
   "dependencies": {
-    "express": "^4.13.4"
+    "chai": "^3.5.0",
+    "chai-http": "^2.0.1",
+    "express": "^4.13.4",
+    "mocha": "^2.4.5"
   }
 }
