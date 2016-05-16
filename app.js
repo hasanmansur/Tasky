@@ -13,5 +13,6 @@ app.listen(3000, function () {
 	console.log("REST server listening on port 3000");
 });
 
-
+//exporting app for unit test
+module.exports = app;
 
