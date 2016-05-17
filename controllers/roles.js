@@ -1,9 +1,16 @@
+var rolesModel = require("../data/models/roles");
+
 function findAll (req, res) {
     res.send("all roles");
 }
 
 function add (req, res) {
-    res.send("post request");
+    rolesModel.create(req.body, function (err, role) {
+        if (err) {
+            console.log(err);
+        }
+        res.send(role);
+    });
 }
 
 function findById (req, res) {
