@@ -1,12 +1,11 @@
 var chai = require('chai');
 var chaiHttp = require('chai-http');
 var should = chai.should();
-
+var server = require('../app');
 
 chai.use(chaiHttp);
 
 setTimeout(function () {
-    var server = require('../app');
     describe("REST API test", function () {
         describe("role module test", function () {
             it("pending tests for role module");
