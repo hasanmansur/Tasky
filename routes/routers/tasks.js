@@ -1,8 +1,13 @@
 var router = require("express").Router();
+var tasksCtrl = require("../../controllers/tasks");
 
 router.route("/")
-    .get(function (req, res) {
-        res.send("tasks home");
-    });
+    .get (tasksCtrl.findAll)
+    .post (tasksCtrl.add);
+    
+router.route("/:id")
+    .get (tasksCtrl.findById)
+    .put (tasksCtrl.update)
+    .delete (tasksCtrl.delete);
     
 module.exports = router;

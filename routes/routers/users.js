@@ -1,8 +1,13 @@
 var router = require("express").Router();
+var usersCtrl = require("../../controllers/users");
 
 router.route("/")
-    .get(function (req, res) {
-        res.send("users home");
-    });
+    .get (usersCtrl.findAll)
+    .post (usersCtrl.add);
+    
+router.route("/:id")
+    .get (usersCtrl.findById)
+    .put (usersCtrl.update)
+    .delete (usersCtrl.delete);
     
 module.exports = router;
