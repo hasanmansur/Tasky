@@ -1,29 +1,49 @@
-var rolesModel = require("../data/models/roles");
+var rolesModel = require('../data/models/roles');
 
 function findAll (req, res, next) {
-    rolesModel.find({}, function (err, roles) {
+    rolesModel.find({})
+    .populate('parentId')
+    .exec(function (err, roles) {
         if (err) {
-            next(err.message);
+            return next(err);
         }
-        res.send(roles);
-    });
-}
-
-function add (req, res, next) {
-    rolesModel.create(req.body, function (err, role) {
-        if (err) {
-            next(err.message);
-        }
-        res.send(role);
+        res.send(roles);   
     });
 }
 
 function findById (req, res, next) {
-    rolesModel.findById(req.params.id, function (err, role) {
+    rolesModel.findById(req.params.id)
+    .populate('parentId')
+    .exec(function (err, role) {
         if (err) {
-            next(err.message);
+            return next(err);
         }
-        res.send(role);
+        res.send(role);   
+    });
+}
+
+function add (req, res, next) {
+    rolesModel.findOne({ lft: 1 }, function (err, root) {
+        if (err) {
+            return next(err);
+        }
+        rolesModel.rebuildTree(root, root.lft, function () {
+            rolesModel.findOne({ _id: req.body.parentId }, function (err, parent) {
+                if (err) {
+                    return next(err);
+                }
+                var newRole = new rolesModel({
+                    name: req.body.name,
+                    parentId: parent._id
+                });
+                newRole.save(function (err, role) {
+                    if (err) {
+                        return next(err);
+                    }
+                    res.send(role);
+                });
+            });
+        });
     });
 }
 
@@ -47,8 +67,8 @@ function del (req, res, next) {
 
 module.exports = {
     findAll: findAll,
-    add: add,
     findById: findById,
+    add: add,
     update: update,
     delete: del 
 }
