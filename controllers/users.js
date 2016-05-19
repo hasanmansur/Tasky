@@ -19,10 +19,18 @@ function add (req, res, next) {
 }
 
 function findById (req, res, next) {
-    usersModel.findById(req.params.id, function (err, user) {
+    /*usersModel.findById(req.params.id, function (err, user) {
         if (err) {
             next(err.message);
         }
+        res.send(user);
+    });*/
+    console.log(req.baseUrl);
+    console.log(req.method);
+    usersModel
+    .findById(req.params.id)
+    .populate("role")
+    .exec(function (err, user) {
         res.send(user);
     });
 }

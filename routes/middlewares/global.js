@@ -1,6 +1,6 @@
-function testMiddleware(req, res, next) {
-    console.log("this is common for all routes");
+function loadUser(req, res, next) {
+    console.log("req.user need to be set before going to controller");
     next();
 }
 
-module.exports = testMiddleware;
+module.exports = loadUser;

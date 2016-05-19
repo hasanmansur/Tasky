@@ -2,11 +2,16 @@ var roles = require("./routers/roles");
 var users = require("./routers/users");
 var tasks = require("./routers/tasks");
 
-module.exports = function (app) {
+var loadUser = require("./middlewares/global");
 
+module.exports = function (app) {
+    
+    
     app.get("/", function (req, res) {
         res.send("welcome to task manager");
     });
+    
+    app.use(loadUser);
     
     //route middlewares
     app.use("/roles", roles);
@@ -16,6 +21,7 @@ module.exports = function (app) {
     
     app.get("*", function (req, res) {
         res.send("no route matched");
-    });     
+    });
+         
 }
 

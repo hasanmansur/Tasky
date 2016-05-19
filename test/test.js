@@ -7,6 +7,7 @@ chai.use(chaiHttp);
 
 setTimeout(function () {
     describe("REST API test", function () {
+    /*
         describe("role api test", function () {
             it("POST /roles", function (done) {
                 chai.request(server)
@@ -83,8 +84,23 @@ setTimeout(function () {
                 });
             });
         });
+       */
         describe("user api test", function () {
-            it("pending tests for user module");
+            it("POST /users", function (done) {
+                chai.request(server)
+                .post('/users')
+                .send({name: 'hasan', role: "573c2024447bd3a41aa01ef5"})
+                .end(function (err, res) {
+                    res.should.have.status(200);
+                    res.should.be.json;
+                    res.body.should.be.a('object');
+                    res.body.should.have.property('_id');
+                    res.body.should.have.property('name');
+                    res.body.should.have.property('__v');
+                    res.body.name.should.equal('hasan');
+                    done();
+                }); 
+            });
         });
         describe("task api test", function () {
             it("pending tests for task module");
