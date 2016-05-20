@@ -1,36 +1,42 @@
 var usersModel = require("../data/models/users");
 
 function findAll (req, res, next) {
-    usersModel.find({}, function (err, users) {
-        if (err) {
-            next(err.message);
+    usersModel.find({})
+    .populate({
+        path: 'role',
+        populate: {
+            path: 'parentId'
         }
-        res.send(users);
+    })
+    .exec(function (err, users) {
+        if (err) {
+            return next(err);
+        }
+        res.send(users);   
+    }); 
+}
+
+function findById (req, res, next) {
+    usersModel.findById(req.params.id)
+    .populate({
+        path: 'role',
+        populate: {
+            path: 'parentId'
+        }
+    })
+    .exec(function (err, user) {
+        if (err) {
+            return next(err);
+        }
+        res.send(user);   
     });
 }
 
 function add (req, res, next) {
     usersModel.create(req.body, function (err, user) {
         if (err) {
-            next(err.message);
+            next(err);
         }
-        res.send(user);
-    });
-}
-
-function findById (req, res, next) {
-    /*usersModel.findById(req.params.id, function (err, user) {
-        if (err) {
-            next(err.message);
-        }
-        res.send(user);
-    });*/
-    console.log(req.baseUrl);
-    console.log(req.method);
-    usersModel
-    .findById(req.params.id)
-    .populate("role")
-    .exec(function (err, user) {
         res.send(user);
     });
 }
@@ -38,7 +44,7 @@ function findById (req, res, next) {
 function update (req, res, next) {
     usersModel.update({_id: req.params.id}, req.body, function (err, rawResponse) {
         if (err) {
-            next(err.message);
+            next(err);
         }
         res.send(rawResponse);
     });
@@ -55,8 +61,8 @@ function del (req, res, next) {
 
 module.exports = {
     findAll: findAll,
-    add: add,
     findById: findById,
+    add: add,
     update: update,
     delete: del 
 }

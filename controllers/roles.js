@@ -1,14 +1,6 @@
 var rolesModel = require('../data/models/roles');
 
 function findAll (req, res, next) {
-    /*rolesModel.find({})
-    .populate('parentId')
-    .exec(function (err, roles) {
-        if (err) {
-            return next(err);
-        }
-        res.send(roles);   
-    });*/
     rolesModel.findOne({ name: 'admin' }, function(err, root) {
         if (err) {
             return next(err);
@@ -27,14 +19,6 @@ function findAll (req, res, next) {
 }
 
 function findById (req, res, next) {
-    /*rolesModel.findById(req.params.id)
-    .populate('parentId')
-    .exec(function (err, role) {
-        if (err) {
-            return next(err);
-        }
-        res.send(role);   
-    });*/
     rolesModel.findOne({ name: 'admin' }, function(err, root) {
         if (err) {
             return next(err);
@@ -53,7 +37,7 @@ function findById (req, res, next) {
 }
 
 function add (req, res, next) {
-    rolesModel.findOne({ name: 'admin' }, function (err, root) {
+    rolesModel.findOne({ lft: 1 }, function (err, root) {
         if (err) {
             return next(err);
         }
@@ -80,21 +64,19 @@ function add (req, res, next) {
 function update (req, res, next) {
     rolesModel.update({_id: req.params.id}, req.body, function (err, rawResponse) {
         if (err) {
-            next(err.message);
+            next(err);
         }
         res.send(rawResponse);
     });
 }
 
 function del (req, res, next) {
-    rolesModel.findOne({ name: 'admin' }, function(err, root) {
-        console.log(root);
+    rolesModel.findOne({ lft: 1 }, function(err, root) {
         if (err) {
             return next(err);
         }
         rolesModel.rebuildTree(root, root.lft, function() {
             rolesModel.findOne({_id: req.params.id }, function(err, role) {
-                console.log(role);
                 if (err) {
                     return next(err);
                 }

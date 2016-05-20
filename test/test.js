@@ -6,8 +6,8 @@ var server = require('../app');
 chai.use(chaiHttp);
 
 setTimeout(function () {
-    describe("REST API test", function () {
-        describe("role api test", function () {
+    describe("REST API test----------", function () {
+        describe("role api test----------", function () {
             /*it("POST /roles", function (done) {
                 chai.request(server)
                 .post('/roles')
@@ -86,8 +86,27 @@ setTimeout(function () {
                 });
             });*/
         });
-        describe("user api test", function () {
-            it("pending tests for task module");
+        describe("user api test----------", function () {
+            it("POST /users", function (done) {
+                chai.request(server)
+                .post('/users')
+                .send({username: 'user_subadmin', password: '123', role: '573f21b8e56fc053153af6a4', email: 'user_subadmin@tasky.com'})
+                .end(function (err, res) {
+                    res.should.have.status(200);
+                    res.should.be.json;
+                    res.body.should.be.a('object');
+                    res.body.should.have.property('_id');
+                    res.body.should.have.property('__v');
+                    res.body.should.have.property('username');
+                    res.body.should.have.property('password');
+                    res.body.should.have.property('role');
+                    res.body.should.have.property('email');
+                    res.body.username.should.equal('user_subadmin');
+                    res.body.role.should.equal('573f21b8e56fc053153af6a4');
+                    res.body.email.should.equal('user_subadmin@tasky.com');
+                    done();
+                }); 
+            });
         });
         describe("task api test", function () {
             it("pending tests for task module");
