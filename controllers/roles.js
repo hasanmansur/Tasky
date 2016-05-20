@@ -1,29 +1,59 @@
 var rolesModel = require('../data/models/roles');
 
 function findAll (req, res, next) {
-    rolesModel.find({})
+    /*rolesModel.find({})
     .populate('parentId')
     .exec(function (err, roles) {
         if (err) {
             return next(err);
         }
         res.send(roles);   
+    });*/
+    rolesModel.findOne({ name: 'admin' }, function(err, root) {
+        if (err) {
+            return next(err);
+        }
+        rolesModel.rebuildTree(root, root.lft, function() {
+            rolesModel.find({})
+            .populate('parentId')
+            .exec(function (err, roles) {
+                if (err) {
+                    return next(err);
+                }
+                res.send(roles);   
+            });  
+        });
     });
 }
 
 function findById (req, res, next) {
-    rolesModel.findById(req.params.id)
+    /*rolesModel.findById(req.params.id)
     .populate('parentId')
     .exec(function (err, role) {
         if (err) {
             return next(err);
         }
         res.send(role);   
+    });*/
+    rolesModel.findOne({ name: 'admin' }, function(err, root) {
+        if (err) {
+            return next(err);
+        }
+        rolesModel.rebuildTree(root, root.lft, function() {
+            rolesModel.findById(req.params.id)
+            .populate('parentId')
+            .exec(function (err, role) {
+                if (err) {
+                    return next(err);
+                }
+                res.send(role);   
+            });      
+        });
     });
 }
 
 function add (req, res, next) {
-    rolesModel.findOne({ lft: 1 }, function (err, root) {
+    rolesModel.findOne({ name: 'admin' }, function (err, root) {
         if (err) {
             return next(err);
         }
@@ -57,11 +87,22 @@ function update (req, res, next) {
 }
 
 function del (req, res, next) {
-    rolesModel.remove({_id: req.params.id}, function (err, result) {
+    rolesModel.findOne({ name: 'admin' }, function(err, root) {
+        console.log(root);
         if (err) {
-            next(err.message);
+            return next(err);
         }
-        res.send(result);
+        rolesModel.rebuildTree(root, root.lft, function() {
+            rolesModel.findOne({_id: req.params.id }, function(err, role) {
+                console.log(role);
+                if (err) {
+                    return next(err);
+                }
+                role.remove(function(err, result) {
+                    res.send(result);
+                });
+            });
+        });
     });
 }
 
