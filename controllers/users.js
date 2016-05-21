@@ -53,8 +53,9 @@ function update (req, res, next) {
 function del (req, res, next) {
     usersModel.remove({_id: req.params.id}, function (err, result) {
         if (err) {
-            next(err.message);
+            next(err);
         }
+        //console.log(result);
         res.send(result);
     });
 }

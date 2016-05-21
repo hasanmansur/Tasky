@@ -87,7 +87,7 @@ setTimeout(function () {
             });*/
         });
         describe("user api test----------", function () {
-            it("POST /users", function (done) {
+            /*it("POST /users", function (done) {
                 chai.request(server)
                 .post('/users')
                 .send({username: 'user_subadmin', password: '123', role: '573f21b8e56fc053153af6a4', email: 'user_subadmin@tasky.com'})
@@ -106,6 +106,31 @@ setTimeout(function () {
                     res.body.email.should.equal('user_subadmin@tasky.com');
                     done();
                 }); 
+            });*/
+            /*it("PUT /users/:id", function (done) {
+                chai.request(server)
+                .put('/users/573f60a596394b541317f87b')
+                .send({username: 'hasan', email: 'hasan@tasky.com'})
+                .end(function (err, res) {
+                    res.should.have.status(200);
+                    res.should.be.json;
+                    res.body.should.be.a('object');
+                    res.body.should.have.property('ok');
+                    res.body.should.have.property('nModified');
+                    res.body.should.have.property('n');
+                    res.body.ok.should.equal(1);
+                    res.body.nModified.should.equal(1);
+                    res.body.n.should.equal(1);
+                    done();
+                });
+            });*/
+            it("DELETE /users/:id", function (done) {
+                chai.request(server)
+                .delete('/users/573f60a596394b541317f87b')
+                .end(function (err, res) {
+                    
+                    done();
+                });
             });
         });
         describe("task api test", function () {
