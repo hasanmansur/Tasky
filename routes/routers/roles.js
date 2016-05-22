@@ -9,5 +9,8 @@ router.route("/:id")
     .get (rolesCtrl.findById)
     .put (rolesCtrl.update)
     .delete (rolesCtrl.delete);
-    
+
+router.route("/descendants/:id")
+	.get (rolesCtrl.findDescendants);
+  
 module.exports = router;

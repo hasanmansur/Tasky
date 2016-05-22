@@ -55,7 +55,6 @@ function del (req, res, next) {
         if (err) {
             next(err);
         }
-        //console.log(result);
         res.send(result);
     });
 }

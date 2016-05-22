@@ -23,7 +23,7 @@ setTimeout(function () {
                     done();
                 }); 
             });*/
-            /*it("GET /roles", function (done) {
+            it("GET /roles", function (done) {
                 chai.request(server)
                 .get('/roles')
                 .end(function (err, res) {
@@ -37,7 +37,7 @@ setTimeout(function () {
                     res.body[1].parentId.name.should.equal('admin');
                     done();
                 });
-            });*/
+            });
             /*it("GET /roles/:id", function (done) {
                 chai.request(server)
                 .get('/roles/573e1d9445c0419314c5764c')
@@ -85,6 +85,15 @@ setTimeout(function () {
                     done();
                 });
             });*/
+            it("GET /roles/:id/descendants", function (done) {
+                chai.request(server)
+                .get('/roles/descendants/573f2170e324d96ef0bf60c9')
+                //.query({ role_id: '573f2170e324d96ef0bf60c9' })
+                .end(function (err, res) {
+                    
+                    done();
+                });
+            });
         });
         describe("user api test----------", function () {
             /*it("POST /users", function (done) {
@@ -124,17 +133,62 @@ setTimeout(function () {
                     done();
                 });
             });*/
-            it("DELETE /users/:id", function (done) {
+            /*it("DELETE /users/:id", function (done) {
                 chai.request(server)
                 .delete('/users/573f60a596394b541317f87b')
                 .end(function (err, res) {
                     
                     done();
                 });
-            });
+            });*/
         });
-        describe("task api test", function () {
-            it("pending tests for task module");
+        describe("task api test----------", function () {
+            /*it("POST /tasks", function (done) {
+                chai.request(server)
+                .post('/tasks')
+                .send({name: 'task1', status: 'To Do', createdBy: '573f5c3aff7ef42e10e26456', assignedTo: '5740a33f860b87b10e32f3a9'})
+                .end(function (err, res) {
+                    res.should.have.status(200);
+                    res.should.be.json;
+                    res.body.should.be.a('object');
+                    res.body.should.have.property('_id');
+                    res.body.should.have.property('__v');
+                    res.body.should.have.property('name');
+                    res.body.should.have.property('status');
+                    res.body.should.have.property('createdBy');
+                    res.body.should.have.property('assignedTo');
+                    res.body.name.should.equal('task1');
+                    res.body.status.should.equal('To Do');
+                    res.body.createdBy.should.equal('573f5c3aff7ef42e10e26456');
+                    res.body.assignedTo.should.equal('5740a33f860b87b10e32f3a9');
+                    done();
+                }); 
+            });*/
+            /*it("PUT /users/:id", function (done) {
+                chai.request(server)
+                .put('/users/573f60a596394b541317f87b')
+                .send({username: 'hasan', email: 'hasan@tasky.com'})
+                .end(function (err, res) {
+                    res.should.have.status(200);
+                    res.should.be.json;
+                    res.body.should.be.a('object');
+                    res.body.should.have.property('ok');
+                    res.body.should.have.property('nModified');
+                    res.body.should.have.property('n');
+                    res.body.ok.should.equal(1);
+                    res.body.nModified.should.equal(1);
+                    res.body.n.should.equal(1);
+                    done();
+                });
+            });*/
+            /*it("DELETE /users/:id", function (done) {
+                chai.request(server)
+                .delete('/users/573f60a596394b541317f87b')
+                .end(function (err, res) {
+                    
+                    done();
+                });
+            });*/
         });
     });
     run();
