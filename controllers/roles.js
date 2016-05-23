@@ -73,12 +73,6 @@ function update (req, res, next) {
                     return next(err);
                 }
                 if (parent) {
-                    /*rolesModel.update({_id: req.params.id}, req.body, function (err, rawResponse) {
-                        if (err) {
-                            next(err);
-                        }
-                        res.send(rawResponse);
-                    });*/
                     var newRole = new rolesModel({
                         name: req.body.name,
                         parentId: parent._id
