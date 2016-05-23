@@ -12,5 +12,8 @@ router.route("/:id")
 
 router.route("/descendants/:id")
 	.get (rolesCtrl.findDescendants);
+
+router.route("/selfAndDescendants/:id")
+	.get (rolesCtrl.findSelfAndDecendants);
   
 module.exports = router;

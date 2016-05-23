@@ -11,7 +11,7 @@ setTimeout(function () {
             /*it("POST /roles", function (done) {
                 chai.request(server)
                 .post('/roles')
-                .send({name: 'sub admin', parentId: '573f2170e324d96ef0bf60c9'})
+                .send({name: 'asst, sub admin', parentId: '573f21b8e56fc053153af6a4'})
                 .end(function (err, res) {
                     res.should.have.status(200);
                     res.should.be.json;
@@ -19,11 +19,11 @@ setTimeout(function () {
                     res.body.should.have.property('_id');
                     res.body.should.have.property('name');
                     res.body.should.have.property('__v');
-                    res.body.name.should.equal('sub admin');
+                    res.body.name.should.equal('asst, sub admin');
                     done();
                 }); 
             });*/
-            it("GET /roles", function (done) {
+            /*it("GET /roles", function (done) {
                 chai.request(server)
                 .get('/roles')
                 .end(function (err, res) {
@@ -37,7 +37,7 @@ setTimeout(function () {
                     res.body[1].parentId.name.should.equal('admin');
                     done();
                 });
-            });
+            });*/
             /*it("GET /roles/:id", function (done) {
                 chai.request(server)
                 .get('/roles/573e1d9445c0419314c5764c')
@@ -53,23 +53,23 @@ setTimeout(function () {
                     done();
                 });
             });*/
-            /*it("PUT /roles/:id", function (done) {
+            it("PUT /roles/:id", function (done) {
                 chai.request(server)
-                .put('/roles/573c1f3b59fe20511ae0acb7')
-                .send({'name': 'hasan'})
+                .put('/roles/5742b11f58fb3f9b162b62b1')
+                .send({'name': 'assistant sub admin', parentId: '574291a2289989d00c363d69'})
                 .end(function (err, res) {
                     res.should.have.status(200);
-                    res.should.be.json;
+                    /*res.should.be.json;
                     res.body.should.be.a('object');
                     res.body.should.have.property('ok');
                     res.body.should.have.property('nModified');
                     res.body.should.have.property('n');
                     res.body.ok.should.equal(1);
                     res.body.nModified.should.equal(1);
-                    res.body.n.should.equal(1);
+                    res.body.n.should.equal(1);*/
                     done();
                 });
-            });*/
+            });
             /*it("DELETE /roles/:id", function (done) {
                 chai.request(server)
                 .delete('/roles/573f2199c753a81a15235003')
@@ -85,15 +85,22 @@ setTimeout(function () {
                     done();
                 });
             });*/
-            it("GET /roles/:id/descendants", function (done) {
+            /*it("GET /roles/descendants/:id", function (done) {
                 chai.request(server)
                 .get('/roles/descendants/573f2170e324d96ef0bf60c9')
                 //.query({ role_id: '573f2170e324d96ef0bf60c9' })
                 .end(function (err, res) {
-                    
                     done();
                 });
             });
+            it("GET /roles/selfAndDescendants/:id", function (done) {
+                chai.request(server)
+                .get('/roles/selfAndDescendants/573f2170e324d96ef0bf60c9')
+                //.query({ role_id: '573f2170e324d96ef0bf60c9' })
+                .end(function (err, res) {
+                    done();
+                });
+            });*/
         });
         describe("user api test----------", function () {
             /*it("POST /users", function (done) {
