@@ -1,5 +1,8 @@
 var router = require("express").Router();
 var rolesCtrl = require("../../controllers/roles");
+var loadUser = require("../middlewares/loadUser");
+
+router.use(loadUser);
 
 router.route("/")
     .get (rolesCtrl.findAll)
