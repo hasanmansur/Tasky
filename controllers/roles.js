@@ -133,14 +133,13 @@ function findDescendants (req, res, next) {
                         if (err) {
                             return next(err);
                         }
-                        console.log(roles);
                         res.send(roles);
                     }); 
                 });
             }); 
         });
     });
-}
+}1
 
 function findSelfAndDecendants (req, res, next) {
     rolesModel.findOne({ lft: 1 }, function(err, root) {
