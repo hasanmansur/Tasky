@@ -73,15 +73,22 @@ function update (req, res, next) {
                     return next(err);
                 }
                 if (parent) {
-                    var newRole = new rolesModel({
+                    /*var newRole = new rolesModel({
                         name: req.body.name,
                         parentId: parent._id
                     });
-                    newRole.save({ _id: req.params.id }, function (err, role) {
+                    newRole.save({_id: req.params.id}, function (err, role) {
+                        console.log(req.params.id);
                         if (err) {
                             return next(err);
                         }
                         res.send(role);
+                    });*/
+                    rolesModel.update({_id: req.params.id}, req.body, function (err, rawResponse) {
+                        if (err) {
+                            next(err);
+                        }
+                        res.send(rawResponse);
                     });
                 }
                 else {
@@ -105,6 +112,9 @@ function del (req, res, next) {
                     return next(err);
                 }
                 role.remove(function(err, result) {
+                    if (err) {
+                        return next(err);
+                    }
                     res.send(result);
                 });
             });
@@ -118,7 +128,7 @@ function findDescendants (req, res, next) {
             return next(err);
         }
         rolesModel.rebuildTree(root, root.lft, function() {
-            rolesModel.findOne({ _id: req.params.id }, function (err, role) {
+            rolesModel.findOne({ _id: req.user.role._id }, function (err, role) {
                 if (err) {
                     return next(err);
                 }
@@ -133,6 +143,7 @@ function findDescendants (req, res, next) {
                         if (err) {
                             return next(err);
                         }
+                        console.log(roles);
                         res.send(roles);
                     }); 
                 });
@@ -147,7 +158,7 @@ function findSelfAndDecendants (req, res, next) {
             return next(err);
         }
         rolesModel.rebuildTree(root, root.lft, function() {
-            rolesModel.findOne({ _id: req.params.id }, function (err, role) {
+            rolesModel.findOne({ _id: req.user.role._id }, function (err, role) {
                 if (err) {
                     return next(err);
                 }

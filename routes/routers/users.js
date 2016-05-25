@@ -1,5 +1,8 @@
 var router = require("express").Router();
 var usersCtrl = require("../../controllers/users");
+var loadUser = require("../middlewares/loadUser");
+
+router.use(loadUser);
 
 router.route("/")
     .get (usersCtrl.findAll)
@@ -10,7 +13,10 @@ router.route("/:id")
     .put (usersCtrl.update)
     .delete (usersCtrl.delete);
 
-router.route("/descendants/:role_id")
+/*router.route("/descendants/:role_id")
+	.get (usersCtrl.findDescendants);*/
+
+router.route("/find/descendants")
 	.get (usersCtrl.findDescendants);
   
     

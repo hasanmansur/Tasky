@@ -13,10 +13,10 @@ router.route("/:id")
     .put (rolesCtrl.update)
     .delete (rolesCtrl.delete);
 
-router.route("/descendants/:id")
+router.route("/find/descendants")
 	.get (rolesCtrl.findDescendants);
 
-router.route("/selfAndDescendants/:id")
+router.route("/find/selfAndDescendants")
 	.get (rolesCtrl.findSelfAndDecendants);
   
 module.exports = router;

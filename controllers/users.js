@@ -66,7 +66,7 @@ function findDescendants (req, res, next) {
             return next(err);
         }
         rolesModel.rebuildTree(root, root.lft, function() {
-            rolesModel.findOne({ _id: req.params.role_id }, function (err, role) {
+            rolesModel.findOne({ _id: req.user.role._id }, function (err, role) {
                 if (err) {
                     return next(err);
                 }
@@ -81,6 +81,7 @@ function findDescendants (req, res, next) {
                         if (err) {
                             return next(err);
                         }
+                        console.log(users);
                         res.send(users);
                     }); 
                 });
@@ -95,5 +96,5 @@ module.exports = {
     add: add,
     update: update,
     delete: del,
-    findDescendants: findDescendants 
+    findDescendants: findDescendants
 }
