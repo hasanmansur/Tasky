@@ -7,11 +7,11 @@ chai.use(chaiHttp);
 
 setTimeout(function () {
         describe("roles api test----------", function () {
-            /*it("POST /roles", function (done) {
+            it("POST /roles", function (done) {
                 chai.request(server)
                 .post('/roles')
                 .query({ user_id: '5744a3e36c873afa1917cb4d' })
-                .send({name: 'sub admin4', parentId: '574496987b77e06a99fdf561'})
+                .send({name: 'junior sub admin', parentId: '574496987b77e06a99fdf561'})
                 .end(function (err, res) {
                     res.should.have.status(200);
                     res.should.be.json;
@@ -19,10 +19,10 @@ setTimeout(function () {
                     res.body.should.have.property('_id');
                     res.body.should.have.property('name');
                     res.body.should.have.property('__v');
-                    res.body.name.should.equal('sub admin4');
+                    res.body.name.should.equal('junior sub admin');
                     done();
                 }); 
-            });*/
+            });
             /*it("GET /roles", function (done) {
                 chai.request(server)
                 .get('/roles')

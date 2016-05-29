@@ -55,6 +55,12 @@ function add (req, res, next) {
                     if (err) {
                         return next(err);
                     }
+                    newRole.on('es-indexed', function(err, res){
+                        if (err) {
+                            return next(err);
+                        }
+                        console.log('role indexed');
+                    });
                     res.send(role);
                 });
             });
