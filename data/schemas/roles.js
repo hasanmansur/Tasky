@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var NestedSetPlugin = require('mongoose-nested-set');
 
-var mongoosastic = require('mongoosastic');
+//var mongoosastic = require('mongoosastic');
 
 
 var rolesSchema = new Schema({
@@ -10,6 +10,6 @@ var rolesSchema = new Schema({
 });
 
 rolesSchema.plugin(NestedSetPlugin);
-rolesSchema.plugin(mongoosastic);
+//rolesSchema.plugin(mongoosastic);
 
 module.exports = rolesSchema;

@@ -43,7 +43,7 @@ function add (req, res, next) {
 }
 
 function update (req, res, next) {
-    usersModel.update({_id: req.params.id}, req.body, function (err, rawResponse) {
+    usersModel.findOneAndUpdate({_id: req.params.id}, req.body, { upsert: true,'new': true }, function (err, rawResponse) {
         if (err) {
             next(err);
         }
@@ -52,11 +52,27 @@ function update (req, res, next) {
 }
 
 function del (req, res, next) {
-    usersModel.remove({_id: req.params.id}, function (err, result) {
+    /*usersModel.remove({_id: req.params.id}, function (err, result) {
         if (err) {
             next(err);
         }
         res.send(result);
+    });*/
+    usersModel.findById(req.params.id, function(err, user) {
+        if (err) {
+            return next(err);
+        }
+        user.remove(function(err, result) {
+            if (err) {
+                return next(err);
+            }
+            user.unIndex(function(err) {
+                if (err) {
+                    console.log(err);
+                }
+            });
+            res.send(result);
+        });
     });
 }
 

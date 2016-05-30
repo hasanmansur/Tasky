@@ -7,11 +7,11 @@ chai.use(chaiHttp);
 
 setTimeout(function () {
         describe("roles api test----------", function () {
-            it("POST /roles", function (done) {
+            /*it("POST /roles", function (done) {
                 chai.request(server)
                 .post('/roles')
                 .query({ user_id: '5744a3e36c873afa1917cb4d' })
-                .send({name: 'junior sub admin', parentId: '574496987b77e06a99fdf561'})
+                .send({name: 'tata', parentId: '574496987b77e06a99fdf561'})
                 .end(function (err, res) {
                     res.should.have.status(200);
                     res.should.be.json;
@@ -19,10 +19,10 @@ setTimeout(function () {
                     res.body.should.have.property('_id');
                     res.body.should.have.property('name');
                     res.body.should.have.property('__v');
-                    res.body.name.should.equal('junior sub admin');
+                    res.body.name.should.equal('faisal');
                     done();
                 }); 
-            });
+            });*/
             /*it("GET /roles", function (done) {
                 chai.request(server)
                 .get('/roles')
@@ -57,16 +57,16 @@ setTimeout(function () {
             });*/
             /*it("PUT /roles/:id", function (done) {
                 chai.request(server)
-                .put('/roles/5745556ae71d7da01ae9ce66')
+                .put('/roles/574bd0ede4abe0ed14703623')
                 .query({ user_id: '5744a3e36c873afa1917cb4d' })
-                .send({'name': 'testic sub admin', parentId: '574496987b77e06a99fdf561'})
+                .send({'name': 'my sub admin', parentId: '574496987b77e06a99fdf561'})
                 .end(function (err, res) {
                     done();
                 });
             });*/
             /*it("DELETE /roles/:id", function (done) {
                 chai.request(server)
-                .delete('/roles/5745556ae71d7da01ae9ce66')
+                .delete('/roles/574bf1d39dfc617c2237027c')
                 .query({ user_id: '5744a3e36c873afa1917cb4d' })
                 .end(function (err, res) {
                     res.should.have.status(200);
@@ -97,45 +97,25 @@ setTimeout(function () {
                     chai.request(server)
                     .post('/users')
                     .query({ user_id: '5744a3e36c873afa1917cb4d' })
-                    .send({username: 'user_subadmin2', password: '123', role: '574559934e99f0101e3e1808', email: 'user_subadmin2@tasky.com'})
+                    .send({username: 'hasan', password: '123', role: '574559934e99f0101e3e1808', email: 'hasan@tasky.com'})
                     .end(function (err, res) {
-                        res.should.have.status(200);
-                        res.should.be.json;
-                        res.body.should.be.a('object');
-                        res.body.should.have.property('_id');
-                        res.body.should.have.property('__v');
-                        res.body.should.have.property('username');
-                        res.body.should.have.property('password');
-                        res.body.should.have.property('role');
-                        res.body.should.have.property('email');
-                        res.body.username.should.equal('user_subadmin2');
-                        res.body.role.should.equal('574559934e99f0101e3e1808');
-                        res.body.email.should.equal('user_subadmin2@tasky.com');
                         done();
                     }); 
                 });*/
             /*it("PUT /users/:id", function (done) {
                 chai.request(server)
-                .put('/users/573f60a596394b541317f87b')
-                .send({username: 'hasan', email: 'hasan@tasky.com'})
+                .put('/users/574c0e83588baa50268dfb4c')
+                .query({ user_id: '5744a3e36c873afa1917cb4d' })
+                .send({username: 'hasanmansur', email: 'hasanmansur@tasky.com'})
                 .end(function (err, res) {
-                    res.should.have.status(200);
-                    res.should.be.json;
-                    res.body.should.be.a('object');
-                    res.body.should.have.property('ok');
-                    res.body.should.have.property('nModified');
-                    res.body.should.have.property('n');
-                    res.body.ok.should.equal(1);
-                    res.body.nModified.should.equal(1);
-                    res.body.n.should.equal(1);
                     done();
                 });
             });*/
             /*it("DELETE /users/:id", function (done) {
                 chai.request(server)
-                .delete('/users/573f60a596394b541317f87b')
+                .delete('/users/574c0e83588baa50268dfb4c')
+                .query({ user_id: '5744a3e36c873afa1917cb4d' })
                 .end(function (err, res) {
-                    
                     done();
                 });
             });*/

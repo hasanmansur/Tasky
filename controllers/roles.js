@@ -55,12 +55,6 @@ function add (req, res, next) {
                     if (err) {
                         return next(err);
                     }
-                    newRole.on('es-indexed', function(err, res){
-                        if (err) {
-                            return next(err);
-                        }
-                        console.log('role indexed');
-                    });
                     res.send(role);
                 });
             });
@@ -79,20 +73,9 @@ function update (req, res, next) {
                     return next(err);
                 }
                 if (parent) {
-                    /*var newRole = new rolesModel({
-                        name: req.body.name,
-                        parentId: parent._id
-                    });
-                    newRole.save({_id: req.params.id}, function (err, role) {
-                        console.log(req.params.id);
+                    rolesModel.findOneAndUpdate({_id: req.params.id}, req.body, { upsert: true,'new': true }, function (err, rawResponse) {
                         if (err) {
                             return next(err);
-                        }
-                        res.send(role);
-                    });*/
-                    rolesModel.update({_id: req.params.id}, req.body, function (err, rawResponse) {
-                        if (err) {
-                            next(err);
                         }
                         res.send(rawResponse);
                     });
@@ -113,7 +96,7 @@ function del (req, res, next) {
             return next(err);
         }
         rolesModel.rebuildTree(root, root.lft, function() {
-            rolesModel.findOne({_id: req.params.id }, function(err, role) {
+            rolesModel.findById(req.params.id, function(err, role) {
                 if (err) {
                     return next(err);
                 }
@@ -121,6 +104,11 @@ function del (req, res, next) {
                     if (err) {
                         return next(err);
                     }
+                    /*role.unIndex(function(err) {
+                        if (err) {
+                            console.log(err);
+                        }
+                    });*/
                     res.send(result);
                 });
             });
