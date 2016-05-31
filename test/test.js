@@ -94,14 +94,14 @@ setTimeout(function () {
         });
         describe("user api test----------", function () {
             /*it("POST /users", function (done) {
-                    chai.request(server)
-                    .post('/users')
-                    .query({ user_id: '5744a3e36c873afa1917cb4d' })
-                    .send({username: 'hasan', password: '123', role: '574559934e99f0101e3e1808', email: 'hasan@tasky.com'})
-                    .end(function (err, res) {
-                        done();
-                    }); 
-                });*/
+                chai.request(server)
+                .post('/users')
+                .query({ user_id: '5744a3e36c873afa1917cb4d' })
+                .send({username: 'hasan', password: '123', role: '574559934e99f0101e3e1808', email: 'hasan@tasky.com'})
+                .end(function (err, res) {
+                    done();
+                }); 
+            });*/
             /*it("PUT /users/:id", function (done) {
                 chai.request(server)
                 .put('/users/574c0e83588baa50268dfb4c')
@@ -127,6 +127,22 @@ setTimeout(function () {
                     done();
                 });
             });*/
+            /*it("GET /users/elastic/search", function (done) {
+                chai.request(server)
+                .get('/users/elastic/search')
+                .query({ user_id: '5744a3e36c873afa1917cb4d' })
+                .end(function (err, res) {
+                    done();
+                });
+            });*/
+            it("GET /search", function (done) {
+                chai.request(server)
+                .get('/search')
+                .query({ user_id: '5744a3e36c873afa1917cb4d', searchText: 'hasAN' })
+                .end(function (err, res) {
+                    done();
+                });
+            });
         });
         describe("task api test----------", function () {
             /*it("POST /tasks", function (done) {

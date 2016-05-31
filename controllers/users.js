@@ -106,11 +106,25 @@ function findDescendants (req, res, next) {
     });
 }
 
+function search (req, res, next) {
+    usersModel.search({
+        query: {
+            multi_match : {
+                query: 'tesTY',
+                fields: [ "username", "email", "role.name"]
+            }
+        }
+    }, function (err, users) {
+        console.log(users.hits.hits[0]);
+    });   
+}
+
 module.exports = {
     findAll: findAll,
     findById: findById,
     add: add,
     update: update,
     delete: del,
-    findDescendants: findDescendants
+    findDescendants: findDescendants,
+    search: search
 }

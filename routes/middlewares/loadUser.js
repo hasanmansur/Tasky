@@ -16,7 +16,9 @@ function loadUser(req, res, next) {
             return res.status(404).send('user not found');
         }
         req.user = user;
+        console.log('------------ req user ----------------');
         console.log(req.user);
+        console.log('------------ req user ----------------');
         next();  
     });
 }
