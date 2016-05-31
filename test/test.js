@@ -138,7 +138,7 @@ setTimeout(function () {
             it("GET /search", function (done) {
                 chai.request(server)
                 .get('/search')
-                .query({ user_id: '5744a3e36c873afa1917cb4d', searchText: 'hasAN' })
+                .query({ user_id: '5744a3e36c873afa1917cb4d', searchText: 'hasan' })
                 .end(function (err, res) {
                     done();
                 });
@@ -149,46 +149,25 @@ setTimeout(function () {
                 chai.request(server)
                 .post('/tasks')
                 .query({ user_id: '5744a3e36c873afa1917cb4d' })
-                .send({name: 'task1', status: 'To Do', createdBy: '5744a3e36c873afa1917cb4d', assignedTo: '5744a3e36c873afa1917cb4d'})
+                .send({name: 'hasan mansur task', status: 'To Do', createdBy: '5744a3e36c873afa1917cb4d', assignedTo: '5744a3e36c873afa1917cb4d'})
                 .end(function (err, res) {
-                    res.should.have.status(200);
-                    res.should.be.json;
-                    res.body.should.be.a('object');
-                    res.body.should.have.property('_id');
-                    res.body.should.have.property('__v');
-                    res.body.should.have.property('name');
-                    res.body.should.have.property('status');
-                    res.body.should.have.property('createdBy');
-                    res.body.should.have.property('assignedTo');
-                    res.body.name.should.equal('task1');
-                    res.body.status.should.equal('To Do');
-                    res.body.createdBy.should.equal('5744a3e36c873afa1917cb4d');
-                    res.body.assignedTo.should.equal('5744a3e36c873afa1917cb4d');
                     done();
                 }); 
             });*/
-            /*it("PUT /users/:id", function (done) {
+            /*it("PUT /tasks/:id", function (done) {
                 chai.request(server)
-                .put('/users/573f60a596394b541317f87b')
-                .send({username: 'hasan', email: 'hasan@tasky.com'})
+                .put('/tasks/574d99479f2b6dc50eeb3088')
+                .query({ user_id: '5744a3e36c873afa1917cb4d' })
+                .send({name: 'mansur hasAN task'})
                 .end(function (err, res) {
-                    res.should.have.status(200);
-                    res.should.be.json;
-                    res.body.should.be.a('object');
-                    res.body.should.have.property('ok');
-                    res.body.should.have.property('nModified');
-                    res.body.should.have.property('n');
-                    res.body.ok.should.equal(1);
-                    res.body.nModified.should.equal(1);
-                    res.body.n.should.equal(1);
                     done();
                 });
             });*/
-            /*it("DELETE /users/:id", function (done) {
+            /*it("DELETE /tasks/:id", function (done) {
                 chai.request(server)
-                .delete('/users/573f60a596394b541317f87b')
+                .delete('/tasks/574d97381b4cc1370ee6efdc')
+                .query({ user_id: '5744a3e36c873afa1917cb4d' })
                 .end(function (err, res) {
-                    
                     done();
                 });
             });*/

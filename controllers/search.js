@@ -1,8 +1,8 @@
 var usersModel = require("../data/models/users");
+var tasksModel = require("../data/models/tasks");
 var async = require('async');
 
 function search (req, res, next) {
-	//var searchText = req.query.searchText;
 	async.parallel(
 		[
 			function (next) {
@@ -18,11 +18,11 @@ function search (req, res, next) {
 			    });	
 			}, 
 			function (next) {
-				usersModel.search({
+				tasksModel.search({
 			        query: {
 			            multi_match : {
 			                query: req.query.searchText,
-			                fields: [ "username", "email", "role.name"]
+			                fields: [ "name", "status"]
 			            }
 			        }
 			    }, function (err, users) {

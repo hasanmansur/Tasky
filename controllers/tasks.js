@@ -56,7 +56,13 @@ function add (req, res, next) {
 }
 
 function update (req, res, next) {
-    tasksModel.update({_id: req.params.id}, req.body, function (err, rawResponse) {
+    /*tasksModel.update({_id: req.params.id}, req.body, function (err, rawResponse) {
+        if (err) {
+            next(err);
+        }
+        res.send(rawResponse);
+    });*/
+    tasksModel.findOneAndUpdate({_id: req.params.id}, req.body, { upsert: true,'new': true }, function (err, rawResponse) {
         if (err) {
             next(err);
         }
@@ -65,11 +71,27 @@ function update (req, res, next) {
 }
 
 function del (req, res, next) {
-    tasksModel.remove({_id: req.params.id}, function (err, result) {
+    /*tasksModel.remove({_id: req.params.id}, function (err, result) {
         if (err) {
             next(err);
         }
         res.send(result);
+    });*/
+    tasksModel.findById(req.params.id, function(err, task) {
+        if (err) {
+            return next(err);
+        }
+        task.remove(function(err, result) {
+            if (err) {
+                return next(err);
+            }
+            task.unIndex(function(err) {
+                if (err) {
+                    console.log(err);
+                }
+            });
+            res.send(result);
+        });
     });
 }
 
