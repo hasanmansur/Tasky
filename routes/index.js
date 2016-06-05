@@ -2,8 +2,7 @@ var roles = require("./routers/roles");
 var users = require("./routers/users");
 var tasks = require("./routers/tasks");
 var search = require("./routers/search");
-
-
+var auth = require("./routers/auth");
 
 module.exports = function (app) {
     
@@ -12,6 +11,7 @@ module.exports = function (app) {
     });
     
     //route middlewares
+    app.use("/authenticate", auth);
     app.use("/roles", roles);
     app.use("/users", users);
     app.use("/tasks", tasks);

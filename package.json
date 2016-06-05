@@ -21,6 +21,7 @@
     "async": "^1.5.2",
     "body-parser": "^1.15.1",
     "express": "^4.13.4",
+    "jsonwebtoken": "^7.0.0",
     "mongoosastic": "^4.0.2",
     "mongoose": "^4.4.17",
     "mongoose-nested-set": "0.0.7"
