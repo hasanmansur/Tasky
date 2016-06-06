@@ -22,7 +22,7 @@ function auth (req, res, next) {
         		res.json({ success: false, message: 'Authentication failed. Wrong password.' });
         	}
         	else {
-        		var token = jwt.sign(user, config.secret);
+        		var token = jwt.sign(user, config.secret, { expiresIn: 60 });
 		        // return the information including token as JSON
 		        res.json({ success: true, message: 'Enjoy your token!', token: token });
         	}

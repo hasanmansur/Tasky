@@ -10,7 +10,9 @@ function loadUser (req, res, next) {
                 return res.json({ success: false, message: 'failed to authenticate' });
             }
             else {
-                req.decoded = decoded;
+
+                req.user = decoded._doc;
+                console.log(req.user.role._id);
                 next();
             }
         });
@@ -22,6 +24,10 @@ function loadUser (req, res, next) {
         });
     }
 }
+
+module.exports = loadUser;
+
+
 
 
 /*function loadUser(req, res, next) {
@@ -46,5 +52,3 @@ function loadUser (req, res, next) {
         next();  
     });
 }*/
-
-module.exports = loadUser;
