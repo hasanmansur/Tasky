@@ -8,7 +8,7 @@ Following components are used:
 - [***Mongoose***] (http://mongoosejs.com/) as MongoDB object modeling tool.
 - [***Elasticsearch***] (https://www.elastic.co/products/elasticsearch) as search server.
 - [***JWT***] (https://jwt.io/) for token based authentication.
-- [***Mocha***] (https://mochajs.org/) for javascript test framework.
+- [***Mocha***] (https://mochajs.org/) as javascript test framework.
 - [***Chai***] (http://chaijs.com/) as assertion library.
 - [***Mongoose Nested Set***](https://github.com/groupdock/mongoose-nested-set) as Mongoose plugin for nested set pattern.
 - [***Chai-HTTP***](https://github.com/chaijs/chai-http) as HTTP Response assertions plugin for the Chai Assertion Library.
