@@ -16,8 +16,8 @@ router.route("/:id")
 router.route("/find/descendants")
 	.get(usersCtrl.findDescendants);
 
-router.route('/elastic/search')
+/*router.route('/elastic/search')
 	.get(usersCtrl.search);
-  
+  */
     
 module.exports = router;

@@ -1,7 +1,7 @@
 var jwt = require('jsonwebtoken');
 var usersModel = require("../../data/models/users");
 var config = require('../../config');
-
+/*
 function loadUser (req, res, next) {
     var token = req.body.token ||  req.query.token || req.headers['x-access-token'];
     if (token) {
@@ -26,11 +26,11 @@ function loadUser (req, res, next) {
 }
 
 module.exports = loadUser;
+*/
 
 
 
-
-/*function loadUser(req, res, next) {
+function loadUser(req, res, next) {
     usersModel.findById(req.query.user_id)
     .populate({
         path: 'role',
@@ -46,9 +46,11 @@ module.exports = loadUser;
             return res.status(404).send('user not found');
         }
         req.user = user;
-        console.log('------------ req user ----------------');
-        console.log(req.user);
-        console.log('------------ req user ----------------');
+       // console.log('------------ req user ----------------');
+       // console.log(req.user);
+       // console.log('------------ req user ----------------');
         next();  
     });
-}*/
+}
+
+module.exports = loadUser;

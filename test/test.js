@@ -58,60 +58,63 @@ setTimeout(function () {
             /*it("POST /roles", function (done) {
                 chai.request(server)
                 .post('/roles')
-                .query({ token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyIkX18iOnsic3RyaWN0TW9kZSI6dHJ1ZSwiZ2V0dGVycyI6e30sInBvcHVsYXRlZCI6eyJyb2xlIjp7InZhbHVlIjoiNTc0NTU5OTM0ZTk5ZjAxMDFlM2UxODA4Iiwib3B0aW9ucyI6eyJwYXRoIjoicm9sZSIsInBvcHVsYXRlIjpbeyJwYXRoIjoicGFyZW50SWQiLCJfZG9jcyI6e319XSwiX2RvY3MiOnsiNTc0ZDIzYWY0YzhhYWI5YTEzODBlYzNkIjoiNTc0NTU5OTM0ZTk5ZjAxMDFlM2UxODA4In19fX0sIndhc1BvcHVsYXRlZCI6ZmFsc2UsImFjdGl2ZVBhdGhzIjp7InBhdGhzIjp7ImVtYWlsIjoiaW5pdCIsInJvbGUiOiJpbml0IiwicGFzc3dvcmQiOiJpbml0IiwidXNlcm5hbWUiOiJpbml0IiwiX192IjoiaW5pdCIsIl9pZCI6ImluaXQifSwic3RhdGVzIjp7Imlnbm9yZSI6e30sImRlZmF1bHQiOnt9LCJpbml0Ijp7Il9fdiI6dHJ1ZSwiZW1haWwiOnRydWUsInJvbGUiOnRydWUsInBhc3N3b3JkIjp0cnVlLCJ1c2VybmFtZSI6dHJ1ZSwiX2lkIjp0cnVlfSwibW9kaWZ5Ijp7fSwicmVxdWlyZSI6e319LCJzdGF0ZU5hbWVzIjpbInJlcXVpcmUiLCJtb2RpZnkiLCJpbml0IiwiZGVmYXVsdCIsImlnbm9yZSJdfSwiZW1pdHRlciI6eyJkb21haW4iOm51bGwsIl9ldmVudHMiOnt9LCJfZXZlbnRzQ291bnQiOjIsIl9tYXhMaXN0ZW5lcnMiOjB9fSwiaXNOZXciOmZhbHNlLCJfZG9jIjp7Il9fdiI6MCwiZW1haWwiOiJoYXNhbkB0YXNreS5jb20iLCJyb2xlIjp7Il9pZCI6IjU3NDU1OTkzNGU5OWYwMTAxZTNlMTgwOCIsInJndCI6MTUsImxmdCI6MTQsIm5hbWUiOiJ0ZXN0eSBzdWIgYWRtaW4iLCJwYXJlbnRJZCI6eyJfaWQiOiI1NzQ0OTY5ODdiNzdlMDZhOTlmZGY1NjEiLCJuYW1lIjoiYWRtaW4iLCJsZnQiOjEsInJndCI6Mjh9LCJfX3YiOjB9LCJwYXNzd29yZCI6IjEyMyIsInVzZXJuYW1lIjoiaGFzYW4iLCJfaWQiOiI1NzRkMjNhZjRjOGFhYjlhMTM4MGVjM2QifSwiX3ByZXMiOnsiJF9fb3JpZ2luYWxfc2F2ZSI6W251bGwsbnVsbF19LCJfcG9zdHMiOnsiJF9fb3JpZ2luYWxfc2F2ZSI6W119LCJpYXQiOjE0NjUxOTk4OTEsImV4cCI6MTQ2NTE5OTk1MX0.ctDu34j3-yABM4-2TXEHOrh0iqWXKliFIZIhXZr06L8' })
-                .send({name: 'tata', parentId: '574496987b77e06a99fdf561'})
+                .query({ user_id: '58be205c5a304c869816fd6f' })
+                .send({name: 'bata', parentId: '58be1eef5a304c869816fd6e'})
                 .end(function (err, res) {
+                    console.log(res.body);
                     res.should.have.status(200);
-                    res.body.message.should.equal('failed to authenticate');
                     done();
                 }); 
             });*/
             /*it("GET /roles", function (done) {
                 chai.request(server)
                 .get('/roles')
-                .query({ user_id: '5744a3e36c873afa1917cb4d' })
+                .query({ user_id: '58be205c5a304c869816fd6f' })
                 .end(function (err, res) {
+                    console.log(res.body);
                     res.should.have.status(200);
-                    res.should.be.json;
-                    res.body.should.be.a('array');
-                    res.body[1].should.have.property('_id');
-                    res.body[1].should.have.property('name');
-                    res.body[1].should.have.property('__v');
-                    res.body[1].name.should.equal('sub admin');
-                    res.body[1].parentId.name.should.equal('admin');
+                    //res.should.be.json;
+                    //res.body.should.be.a('array');
+                    //res.body[1].should.have.property('_id');
+                    //res.body[1].should.have.property('name');
+                    //res.body[1].name.should.equal('admin');
+                    //res.body[1].parentId.name.should.equal('admin');
                     done();
                 });
             });*/
             /*it("GET /roles/:id", function (done) {
                 chai.request(server)
-                .get('/roles/5744a88e4b5ba46b1c8874c4')
-                .query({ user_id: '5744a3e36c873afa1917cb4d' })
+                .get('/roles/58be2283a99858dd0ea5ec31')
+                .query({ user_id: '58be205c5a304c869816fd6f' })
                 .end(function (err, res) {
+                    console.log(res.body);
                     res.should.have.status(200);
-                    res.should.be.json;
-                    res.body.should.be.a('object');
-                    res.body.should.have.property('_id');
-                    res.body.should.have.property('name');
-                    res.body.should.have.property('__v');
-                    res.body.name.should.equal('sub admin4');
-                    res.body.parentId.name.should.equal('admin');
+                    //res.should.be.json;
+                    //res.body.should.be.a('object');
+                    //res.body.should.have.property('_id');
+                    //res.body.should.have.property('name');
+                    //res.body.should.have.property('__v');
+                    //res.body.name.should.equal('nata');
+                    //res.body.parentId.name.should.equal('admin');
                     done();
                 });
             });*/
             /*it("PUT /roles/:id", function (done) {
                 chai.request(server)
-                .put('/roles/574bd0ede4abe0ed14703623')
-                .query({ user_id: '5744a3e36c873afa1917cb4d' })
-                .send({'name': 'my sub admin', parentId: '574496987b77e06a99fdf561'})
+                .put('/roles/58be9b20f0b3fdf3288ddb7c')
+                .query({ user_id: '58be205c5a304c869816fd6f' })
+                .send({'name': 'hata', parentId: '58be2283a99858dd0ea5ec31'})
                 .end(function (err, res) {
+                    console.log(res.body);
                     done();
                 });
             });*/
             /*it("DELETE /roles/:id", function (done) {
                 chai.request(server)
-                .delete('/roles/574bf1d39dfc617c2237027c')
-                .query({ user_id: '5744a3e36c873afa1917cb4d' })
+                .delete('/roles/58be7fcd9efdce0023cbf20a')
+                .query({ user_id: '58be205c5a304c869816fd6f' })
                 .end(function (err, res) {
+                    console.log(res.body);
                     res.should.have.status(200);
                     //console.log(res);
                     done();
@@ -120,9 +123,9 @@ setTimeout(function () {
             /*it("GET /roles/find/descendants", function (done) {
                 chai.request(server)
                 .get('/roles/find/descendants')
-                .query({ user_id: '5744a3e36c873afa1917cb4d' })
-                .query({ token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyIkX18iOnsic3RyaWN0TW9kZSI6dHJ1ZSwiZ2V0dGVycyI6e30sInBvcHVsYXRlZCI6eyJyb2xlIjp7InZhbHVlIjoiNTc0NDk2OTg3Yjc3ZTA2YTk5ZmRmNTYxIiwib3B0aW9ucyI6eyJwYXRoIjoicm9sZSIsInBvcHVsYXRlIjpbeyJwYXRoIjoicGFyZW50SWQiLCJfZG9jcyI6e319XSwiX2RvY3MiOnsiNTc0NGEzZTM2Yzg3M2FmYTE5MTdjYjRkIjoiNTc0NDk2OTg3Yjc3ZTA2YTk5ZmRmNTYxIn19fX0sIndhc1BvcHVsYXRlZCI6ZmFsc2UsImFjdGl2ZVBhdGhzIjp7InBhdGhzIjp7ImVtYWlsIjoiaW5pdCIsInJvbGUiOiJpbml0IiwicGFzc3dvcmQiOiJpbml0IiwidXNlcm5hbWUiOiJpbml0IiwiX192IjoiaW5pdCIsIl9pZCI6ImluaXQifSwic3RhdGVzIjp7Imlnbm9yZSI6e30sImRlZmF1bHQiOnt9LCJpbml0Ijp7Il9fdiI6dHJ1ZSwiZW1haWwiOnRydWUsInJvbGUiOnRydWUsInBhc3N3b3JkIjp0cnVlLCJ1c2VybmFtZSI6dHJ1ZSwiX2lkIjp0cnVlfSwibW9kaWZ5Ijp7fSwicmVxdWlyZSI6e319LCJzdGF0ZU5hbWVzIjpbInJlcXVpcmUiLCJtb2RpZnkiLCJpbml0IiwiZGVmYXVsdCIsImlnbm9yZSJdfSwiZW1pdHRlciI6eyJkb21haW4iOm51bGwsIl9ldmVudHMiOnt9LCJfZXZlbnRzQ291bnQiOjIsIl9tYXhMaXN0ZW5lcnMiOjB9fSwiaXNOZXciOmZhbHNlLCJfZG9jIjp7Il9fdiI6MCwiZW1haWwiOiJhZG1pbkB0YXNreS5jb20iLCJyb2xlIjp7Il9pZCI6IjU3NDQ5Njk4N2I3N2UwNmE5OWZkZjU2MSIsIm5hbWUiOiJhZG1pbiIsImxmdCI6MSwicmd0IjozMH0sInBhc3N3b3JkIjoiMTIzIiwidXNlcm5hbWUiOiJ1c2VyX2FkbWluIiwiX2lkIjoiNTc0NGEzZTM2Yzg3M2FmYTE5MTdjYjRkIn0sIl9wcmVzIjp7IiRfX29yaWdpbmFsX3NhdmUiOltudWxsLG51bGxdfSwiX3Bvc3RzIjp7IiRfX29yaWdpbmFsX3NhdmUiOltdfSwiaWF0IjoxNDY1MjAxMjY4LCJleHAiOjE0NjUyMDEzMjh9.4RAkcuOiMMv3MNj3nudrcPyBSKz3Bw5tJFPQNj9UVPA'})
+                .query({ user_id: '58be205c5a304c869816fd6f' })
                 .end(function (err, res) {
+                    console.log(res.body);
                     res.should.have.status(200);
                     done();
                 });
@@ -130,9 +133,10 @@ setTimeout(function () {
             /*it("GET /roles/find/selfAndDescendants", function (done) {
                 chai.request(server)
                 .get('/roles/find/selfAndDescendants')
-                .query({ user_id: '5744a3e36c873afa1917cb4d' })
+                .query({ user_id: '58be205c5a304c869816fd6f' })
                 .end(function (err, res) {
-                    console.log(res.status);
+                    console.log(res.body);
+                    res.should.have.status(200);
                     done();
                 });
             });*/

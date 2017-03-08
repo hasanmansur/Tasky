@@ -104,11 +104,11 @@ function del (req, res, next) {
                     if (err) {
                         return next(err);
                     }
-                    /*role.unIndex(function(err) {
+                    role.unIndex(function(err) {
                         if (err) {
-                            console.log(err);
+                            return next(err);
                         }
-                    });*/
+                    });
                     res.send(result);
                 });
             });
@@ -137,7 +137,6 @@ function findDescendants (req, res, next) {
                         if (err) {
                             return next(err);
                         }
-                        console.log(roles);
                         res.send(roles);
                     }); 
                 });
@@ -167,7 +166,6 @@ function findSelfAndDecendants (req, res, next) {
                         if (err) {
                             return next(err);
                         }
-                        console.log(roles);
                         res.send(roles);
                     }); 
                 });
@@ -185,21 +183,3 @@ module.exports = {
     findDescendants: findDescendants,
     findSelfAndDecendants: findSelfAndDecendants
 }
-
-
-//***************************test code***********************************************
-/*async.forEach(roles, function (role, cb) {
-    rolesModel.populate(
-        role,
-        { path: 'parentId' }
-    );
-    console.log(role);
-});*/
-                    
-/*roles.forEach(function (role) {
-    role
-    .populate({
-        path: 'parentId'
-    });
-    console.log(role);
-})*/
