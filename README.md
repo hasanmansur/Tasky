@@ -1,5 +1,5 @@
 # Tasky
-Simple task manager application example to demonstrate REST API development using ***Node.js/ExpressJS***. It also briefly encompases other aspects like ***Search Server, Token Based Authentication, Test Driven Development*** etc.
+This is a task manager backend boilerplate project which focuses on REST API development using ***Node.js/ExpressJS/MongoDB***. It also briefly encompases other aspects like ***ROLE BASED ACCESS CONTROL, Search Server, Token Based Authentication, Test Driven Development*** etc.
 
 Following components are used:
 - [***Node.js***](https://nodejs.org/en/) as JavaScript runtime.
